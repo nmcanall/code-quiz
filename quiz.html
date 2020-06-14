@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Coding Quiz</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+    <body>
+        <!-- Header layout -->
+        <header>
+            <a href="./highscores.html">View Highscores</a>
+            <div class="time-block">
+                <p>Time: </p>
+                <p id="time-remaining">60</p> <!-- This will be changed with JS later -->
+            </div>
+        </header>
+        <!-- Main content -->
+        <main>
+            <!-- Quiz page that normally displays -->
+            <div id="quiz">
+                <!-- This element will be built with JS later -->
+                <h1 id="quiz-question">Quiz Question</h1>
+                <ul id="answer-list">
+                    <li>1. Option 1</li>
+                    <li>2. Option 2</li>
+                    <li>3. Option 3</li>
+                    <li>4. Option 4</li>
+                </ul>
+            </div>
+            <!-- Quiz complete page -->
+            <div id="quiz-complete">
+                <h2>All done!</h2>
+                <p>Your final score is 100.</p> <!-- This will be updated in JS later-->
+                <form id="initials-form">
+                    <p>Enter initials:</p>
+                    <input type="text" name="initials" class="text-input">
+                    <button class="btn" id="submit-initials" type="submit">Submit</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
