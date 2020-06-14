@@ -8,12 +8,8 @@
 :root {
     --primary-color: #024e76;
     --secondary-color: #146fa0;
+    --tertiary-color: #cbd3d4
 }
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 
 /* General content layout */
 .btn-look {
@@ -23,10 +19,13 @@ body {
     font-size: 20px;
     text-align: center;
     border-radius: 5px;
+    margin: 5px 0;
+    max-width: fit-content;
 }
 
 .btn-look:hover {
     background-color: var(--secondary-color);
+    cursor: pointer;
 }
 
 a {
@@ -37,15 +36,35 @@ a {
 /* Header layout */
 header {
     margin: 45px;
+    margin-bottom: 80px;
     display: flex;
     justify-content: space-between;
+    align-content: center;
     flex-wrap: wrap;
 }
 /* End header layout */
 
-/* Body layout */
+/* Body Layout */
 body {
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+}
+
+main {
+    text-align: center;
+    margin: 0 auto;
+    width: 48%;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 35px;
+    margin: 20px;
 }
 /* End body layout */
 
@@ -60,5 +79,32 @@ body {
 /* End quiz.html specific layouts */
 
 /* highscores.html specific layouts */
+.highscores {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+}
 
+.highscores h1 {
+    margin: 80px 0 25px 0;
+}
+
+.highscores ul {
+    margin-bottom: 30px;
+    list-style-type: none;
+}
+
+.highscores li {
+    background-color: var(--tertiary-color);
+    margin: 5px 0;
+    padding: 3px;
+}
+
+.highscores div {
+    display: flex;
+}
+
+#clear-highscores {
+    margin-left: 15px;
+} 
 /* End highscores.html specific layouts */
