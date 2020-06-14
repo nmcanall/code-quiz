@@ -1,0 +1,64 @@
+/* Whole page layouts */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #024e76;
+    --secondary-color: #146fa0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* General content layout */
+.btn-look {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 7px 18px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btn-look:hover {
+    background-color: var(--secondary-color);
+}
+
+a {
+    text-decoration: none;
+}
+/* End general content layout */
+
+/* Header layout */
+header {
+    margin: 45px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* End header layout */
+
+/* Body layout */
+body {
+    text-align: center;
+}
+/* End body layout */
+
+/* index.html specific layouts */
+
+/* End index.html specific layouts */
+
+/* quiz.html specific layouts */
+#quiz-complete {
+    display: none;
+}
+/* End quiz.html specific layouts */
+
+/* highscores.html specific layouts */
+
+/* End highscores.html specific layouts */
