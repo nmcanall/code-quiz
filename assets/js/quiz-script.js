@@ -1,8 +1,10 @@
 // Global Variables
 var timerEl = document.querySelector("#time-remaining");
 var quizQuestionEl = document.querySelector("#quiz");
+var formSubmitEl = document.querySelector("#submit-btn");
 var quizEl = document.querySelector("#quiz");
 var quizCompleteEl = document.querySelector("#quiz-complete");
+var highscoresEl = document.querySelector("#highscores");
 var quizQuestions = [
     {
         q: "What color is the sky?",
@@ -28,6 +30,8 @@ var quizQuestions = [
 var timeRemaining = quizQuestions.length * 15; // Allows 15 seconds per question
 var currentQuestion = 0;
 var numCorrect = 0;
+var finalScore = 0;
+var initials = 0;
 
 // Function to run timer
 var startTimer = function() {
@@ -38,6 +42,9 @@ var startTimer = function() {
         if(timeRemaining === 0) {
             endQuiz();
             document.querySelector("#complete-prompt").textContent = "You've ran out of time.";
+            clearInterval(interval);
+        }
+        if(quizEl.style.display === "none") {
             clearInterval(interval);
         }
         timeRemaining--;
@@ -104,18 +111,54 @@ var endQuiz = function() {
     // Display the end quiz page and remove the take-quiz page
     timerEl.style.display = "none";
     quizEl.style.display = "none";
+    highscoresEl.style.display = "none";
     quizCompleteEl.style.display = "block";
 
     // Update final score
-    var finalScore = Math.round(numCorrect / quizQuestions.length * 100)
+    finalScore = Math.round(numCorrect / quizQuestions.length * 100);
     document.querySelector("#score-prompt").textContent = "Your final score is " + finalScore + "%.";
 };
 
-// Timer starts immediately when page loads
-startTimer();
+// Saves the form data and loads it in the highscores page
+var formInput = function(event) {
+    initials = document.querySelector("#initials").value;
+    finalScore = Math.round(numCorrect / quizQuestions.length * 100);
+    loadHighscore();
+}
 
-// Initialize page with the first quiz question
-newQuizQuestion();
+// Loads highscores and saves data in local storage
+var loadHighscore = function() {
 
-// Listener for when a quiz answer is clicked
-quizEl.addEventListener("click", submitAnswer);
+    // Display the highscores page and remove the take-quiz page
+    quizEl.style.display = "none";
+    highscoresEl.style.display = "block";
+    quizCompleteEl.style.display = "none";
+    console.log(initials, finalScore);
+}
+
+// Current HTML file
+var longFile = window.location.pathname.split("/");
+var shortFile = longFile[longFile.length -1 ];
+
+// Process for quiz.html
+if(shortFile === "quiz.html") {
+
+    // Timer starts immediately when page loads
+    startTimer();
+
+    // Initialize page with the first quiz question
+    newQuizQuestion();
+    
+    // Listener for when a quiz answer is clicked
+    quizEl.addEventListener("click", submitAnswer);
+    
+    // Listener for when a quiz answer is clicked
+    formSubmitEl.addEventListener("click", formInput);
+}
+
+// Process for highscores.html
+if(shortFile === "highscores.html") {
+    console.log(initials, finalScore);
+    debugger;
+    loadHighscore();
+}

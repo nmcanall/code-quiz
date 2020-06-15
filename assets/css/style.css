@@ -80,6 +80,7 @@ h1, h2 {
 
 /* highscores.html specific layouts */
 .highscores {
+    display: none;
     width: 50%;
     margin: 0 auto;
     text-align: left;

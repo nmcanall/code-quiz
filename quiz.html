@@ -10,7 +10,7 @@
     <body>
         <!-- Header layout -->
         <header>
-            <a href="./highscores.html">View Highscores</a>
+            <a href="#"></a>
             <p id="time-remaining"></p> <!-- This will be changed with JS later -->
         </header>
         <!-- Main content -->
@@ -28,9 +28,22 @@
                 <p id="score-prompt">Your final score is 100.</p> <!-- This will be updated in JS later-->
                 <form id="initials-form">
                     <p>Enter initials:</p>
-                    <input type="text" name="initials" class="text-input">
-                    <button class="btn-look" id="submit-initials" type="submit">Submit</button>
+                    <input type="text" name="initials" class="text-input" id="initials">
+                    <button type="button" class="btn-look" id="submit-btn">Submit</button>
                 </form>
+            </div>
+            <!-- Highscores page -->
+            <div class="highscores" id="highscores">
+                <h1>Highscores</h1>
+                <ul>
+                    <!-- This line will be replaced with JS later -->
+                    <li>1.  NSM - 100</li>
+                    <li>2.  BJM - 80</li>
+                </ul>
+                <div>
+                    <a class="btn-look" href="./index.html">Go Back</a>
+                    <p class="btn-look" id="clear-highscores">Clear Highscores</p>
+                </div>
             </div>
         </main>
         <script src="./assets/js/quiz-script.js"></script>
