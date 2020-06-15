@@ -5,6 +5,7 @@ var formSubmitEl = document.querySelector("#submit-btn");
 var quizEl = document.querySelector("#quiz");
 var quizCompleteEl = document.querySelector("#quiz-complete");
 var highscoresEl = document.querySelector("#highscores");
+var highscoreListEl = document.querySelector("#highscore-list");
 var quizQuestions = [
     {
         q: "What color is the sky?",
@@ -134,31 +135,21 @@ var loadHighscore = function() {
     highscoresEl.style.display = "block";
     quizCompleteEl.style.display = "none";
     console.log(initials, finalScore);
+
+    var scoreEl = document.createElement("li");
+    scoreEl.className = "highscore-item";
+    scoreEl.textContent = initials + " - " + finalScore + "%";
+    highscoreListEl.appendChild(scoreEl);
 }
 
-// Current HTML file
-var longFile = window.location.pathname.split("/");
-var shortFile = longFile[longFile.length -1 ];
+// Timer starts immediately when page loads
+startTimer();
 
-// Process for quiz.html
-if(shortFile === "quiz.html") {
+// Initialize page with the first quiz question
+newQuizQuestion();
 
-    // Timer starts immediately when page loads
-    startTimer();
+// Listener for when a quiz answer is clicked
+quizEl.addEventListener("click", submitAnswer);
 
-    // Initialize page with the first quiz question
-    newQuizQuestion();
-    
-    // Listener for when a quiz answer is clicked
-    quizEl.addEventListener("click", submitAnswer);
-    
-    // Listener for when a quiz answer is clicked
-    formSubmitEl.addEventListener("click", formInput);
-}
-
-// Process for highscores.html
-if(shortFile === "highscores.html") {
-    console.log(initials, finalScore);
-    debugger;
-    loadHighscore();
-}
+// Listener for when a quiz answer is clicked
+formSubmitEl.addEventListener("click", formInput);

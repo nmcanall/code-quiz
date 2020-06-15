@@ -95,7 +95,7 @@ h1, h2 {
     list-style-type: none;
 }
 
-.highscores li {
+.highscore-item {
     background-color: var(--tertiary-color);
     margin: 5px 0;
     padding: 3px;
