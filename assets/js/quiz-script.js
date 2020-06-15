@@ -12,21 +12,22 @@ var quizQuestions = [
     {
         q: "What's your dog's name?",
         answers: ["Blue", "Hub", "Bud", "Peter"],
-        answer: "Peter"
+        correctAnswer: "Peter"
     },
     {
         q: "Who plays Forrest Gump?",
         answers: ["Tom Hanks", "Denzel Washington", "Johnny Depp", "Leonardo DiCaprio"],
-        answer: "Tom Hanks"
+        correctAnswer: "Tom Hanks"
     },
     {
         q: "What's the answer to life?",
         answers: ["Happiness", "Money", "42", "Power"],
-        answer: "42"
+        correctAnswer: "42"
     }
 ]
 var timeRemaining = quizQuestions.length * 15; // Allows 15 seconds per question
 var currentQuestion = 0;
+var numCorrect = 0;
 
 // Function to run timer
 var startTimer = function() {
@@ -54,6 +55,13 @@ var submitAnswer = function(event) {
 
     // Store users answer and change score
     var userAnswer = targetEl.textContent;
+    // currentQuestion value is for the next question; so to get the current, use -1
+    if(userAnswer === quizQuestions[currentQuestion - 1].correctAnswer) {
+        numCorrect++;
+    }
+    else {
+        timeRemaining -= 10;
+    }
 
     // If not at the end of the quiz, display the next question; otherwise, end the quiz
     if(currentQuestion < quizQuestions.length) {
@@ -92,9 +100,15 @@ var newQuizQuestion = function() {
 
 // Helper function to end the quiz
 var endQuiz = function() {
+
+    // Display the end quiz page and remove the take-quiz page
     timerEl.style.display = "none";
     quizEl.style.display = "none";
     quizCompleteEl.style.display = "block";
+
+    // Update final score
+    var finalScore = Math.round(numCorrect / quizQuestions.length * 100)
+    document.querySelector("#score-prompt").textContent = "Your final score is " + finalScore + "%.";
 };
 
 // Timer starts immediately when page loads
